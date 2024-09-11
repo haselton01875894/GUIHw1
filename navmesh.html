@@ -8,7 +8,9 @@ Nick Haselton
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<link rel="stylesheet" href="css/thing.css">	
+		<link rel="stylesheet" href="css/thing.css">
+		<meta charset="utf-8">
+		<title>Nick's Portfolio</title>
 	</head>
 	<body>
 		<h1>Navmesh</h1>
@@ -16,7 +18,7 @@ Nick Haselton
 	<p> In video games, you often have enemies that walk around the level. Inorder for them to know where they are allowed to walk and where objects/obstacles are located games typically use a navmesh. a navmesh is a set of connected convex shapes (typically triangles) that define the areas they can walk. From this navmesh, an algorithm such as A* is used to generate a path from 1 position on the map to another.</p>
 	
 	<figure>
-	<img> <img src="images/exampleNav.png" alt="Computer"> </img>
+	<img src="images/exampleNav.png" alt="Computer">
 	<figcaption>Navigation Mesh From Unity.</figcaption>
 	</figure>
 
@@ -49,7 +51,7 @@ for ( int i = 0; i < width * depth; i++ ) {
 }
 </pre></code>
 	<figure>
-	<img> <img src="images/nav1.png" alt="Computer"> </img>
+	<img src="images/nav1.png" alt="Computer">
 	<figcaption>You then end up with spans of all the floors.</figcaption>
 	</figure>
 
@@ -91,7 +93,7 @@ while ( list.size > 0 ){
 }
 	</code></pre>
 	<figure>
-	<img> <img src="images/nav2.png" alt="Computer"> </img>
+	<img src="images/nav2.png" alt="Computer">
 		<figcaption>Each Region is a different color.</figcaption>
 	</figure>
 
@@ -99,12 +101,12 @@ while ( list.size > 0 ){
 	<p> We technically have enough data to allow characters to move, but there are a lot of voxels, which makes it slow and memory hungry. It would be better if we turned them into convex shapes and linked them togehter. A convex shape is a shpae where from any point in the shape, you can draw a line to any other point in the shape without leaving it's bounds. This is important, because when a character tries to find a path between 2 nodes, it has to be able to walk in a straight line from anywhere on 1 node to anywhere on the other node without leaving the graph. </p>
 
 	<figure>
-	<img> <img src="images/convex.png" alt="Computer"> </img>
+	<img src="images/convex.png" alt="Computer">
 		<figcaption>Concave vs Convex.</figcaption>
 	</figure>
 
 	<figure>
-	<img> <img src="images/goodnav.png" alt="Computer"> </img>
+	<img src="images/goodnav.png" alt="Computer">
 		<figcaption>Why Concave shapes are important.</figcaption>
 	</figure>
 
@@ -113,7 +115,7 @@ while ( list.size > 0 ){
 	<p> Voxel games, such as minecraft employ a technique called greedy meshing, which invovles going over all the voxels in a scene and grouping them into easy to render polygons for the GPU. I had the idea to try and take this but force it to only give me meshes that are convex when connected to each other, and to do this I realized I could just check if the corners of a voxel change. If a voxel goes from having 4 neighbors to 3 neighbors, then there is a corner somewhere and it might not be able to connect to other polygons. Instead of calculating these corners every single time we iterate ovre a voxel, we can store it as a single byte. There are 8 neighbors, and if we say each neighbor is a single bit then it can be stored in a byte., If we want to compare the neighbor values of 2 voxels, you just check if the 2 bytes equal. It allows allows for bitwise operators to check if 2 bytes share certain neighbors or don't have certain neighbors.</p>
 	<figure>
 
-	<img2> <img src="images/corners.png" class="resize"> </img2>
+	<img src="images/corners.png" class="resize">
 		<figcaption>The Corner bit values.</figcaption>
 	</figure>
 
