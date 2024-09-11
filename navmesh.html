@@ -24,14 +24,14 @@ Nick Haselton
 
 	<h2> 1) Voxelize the scene  </h2>
 	<p> First, i filter out all the geometry I don't want to count as navmesh data, this is things such as very steep slopes or roofs that nobody should be able to access. With that geometry I voxelize the scene. To do this, I get the bounds of the map, then make a 2d array of vertical spans. For each position on the x,z plane, i get a list of voxels that are touching scene geometry by doing an overlap request with the physics system. Each time it hits something, I add a vertical span containing the min & max Y values of that span. This way, If there's a block thats 10 units high, i can just store a single span with y0 = 0 and y1 = 10, rather than having to store each hit seperately. <a href="https://otik.uk.zcu.cz/bitstream/11025/10606/1/Saupin.pdf"> This paper </a> has more information about the voxelization process. </p> 
-<code><pre>
-for ( int i = 0; i < width * depth; i++ ) {
+<pre><code>
+for ( int i = 0; i &lt; width * depth; i++ ) {
 	//XZ Plane
 	int z = i / width;
 	int x = i % width;
 
 	//Y Plane, for spans
-	for ( int n = 0; n < height; n++){
+	for ( int n = 0; n &lt; height; n++){
 		if ( Physics.Overlap( voxelbound ) ) {
 			Span span;
 			span.xz = Vec2(x,z);
@@ -39,7 +39,7 @@ for ( int i = 0; i < width * depth; i++ ) {
 			y++;
 
 			//Find the end of this span
-			while ( y < height ){
+			while ( y &lt; height ){
 				if ( !Physics.Overlap(voxelbound) ){
 					span.y1 = y;
 					break;
@@ -49,7 +49,7 @@ for ( int i = 0; i < width * depth; i++ ) {
 		}
 	}
 }
-</pre></code>
+</code></pre>
 	<figure>
 	<img src="images/nav1.png" alt="Computer">
 	<figcaption>You then end up with spans of all the floors.</figcaption>
@@ -58,7 +58,7 @@ for ( int i = 0; i < width * depth; i++ ) {
 	<h2> 2) Group Spans into Regions </h2>
 	<p> From these spans, you now want to group them by height. To do this, create a list of all the spans in the map, and a list of regions. regions should contain a list of spans that are all the same height. Then, foreach span in the list, run a flood fill that looks for other tiles of the same height. When you find one, remove it from the list and add it to the region. In the end, you should have a list of regions, that contain all the spans of the map </p>
 
-	<code><pre>
+	<pre><code>
 		
 struct Region{
 	Span* first;
@@ -70,7 +70,7 @@ struct Region{
 for ( int i = 0; i < numspans; i++)
 	list.push_back(spans[i]);
 
-vector&ltRegion> regions;
+vector&lt;Region> regions;
 		
 while ( list.size > 0 ){
 	Span* span = queue.front();
@@ -81,7 +81,7 @@ while ( list.size > 0 ){
 	Span* neighbors[8];
 	int numNeighbors = GetNeighbors(span,neighbors); //Gets the amount of neighbors and adds them to neighbors
 
-	for  ( int n = 0; n < 8; n++ ){
+	for  ( int n = 0; n &lt; 8; n++ ){
 		if( neighbors[i]->y == span->y ) {
 			//Add to regions linked list
 			neighbors[i]->next = reigon.spans;
