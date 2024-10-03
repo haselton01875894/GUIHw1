@@ -1,55 +1,56 @@
-<!--
-File: index.html
-GUI Assignment: Creating Your First Web Page
-Nick Haselton
-9/4/24
--->
-
-
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<link rel="stylesheet" href="css/thing.css">
-		<meta charset="utf-8">
-		<title>Nick's Portfolio</title>
-		<!-- <link rel="stylesheet" href="style.css"> -->
-	</head>
-	<body>
-		<h1>Nick Haselton</h1>
-		<h2>This is the start of my portfolio</h2>
-		
-			<p> Click the image </p>
-			<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-			<img src="images/computer.png" alt="Computer" class="resize">
-			</a>
+<head>
+    <title>Pacific Trails Resort</title>
+    <meta charset="utf-8">
+    <link href="pacific.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if lt IE 9]>
+   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"> </script>   <![endif]-->
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>Pacific Trails Resort</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a>
+                </li>
+                <li><a href="yurts.html">Yurts</a>
+                </li>
+                <li><a href="activities.html">Activities</a>
+                </li>
+                <li><a href="reservations.html">Reservations</a>
+            </ul>
+        </nav>
+        <div id="content">
+            <h2>Enjoy Nature in Luxury</h2>
+            <img src="coast.jpg" alt="Pacific Coast">
+            <p><span class="resort">Pacific Trails Resort</span> offers a special lodging experience on the California North Coast. Relax in serenity with panoramic views of the Pacific Ocean.</p>
+            <ul>
+                <li>Private yurts with decks overlooking the ocean</li>
+                <li>Activities lodge with fireplace and gift shop</li>
+                <li>Nightly fine dining at the Overlook Cafe</li>
+                <li>Heated outdoor pool and whirlpool</li>
+                <li>Guided hiking tours of the redwoods</li>
+            </ul>
+            <div id="contact">
+                <span class="resort">Pacific Trails Resort</span>
+                <br> 12010 Pacific Trails Road
+                <br> Zephyr, CA 95555
+                <br>
+                <br> 888-555-5555
+                <br>
+                <br>
+            </div>
+        </div>
+        <footer>
+            Copyright &copy; 2014 Pacific Trails Resort
+            <br>
+            <a href="mailto:yourfirstname@yourlastname.com">yourfirstname@yourlastname.com</a>
+        </footer>
+    </div>
+</body>
 
-		<!--https://www.w3schools.com/html/html_tables.asp -->
-		<table>
-			<tr>
-				<td><b>Project:</b></td>
-				<td><b>Date:</b></td>
-				<td><b>Time Taken:</b></td>
-				<td><b>Link:</b></td>
-			</tr>
-			<tr>
-				<td>Navmesh</td>
-				<td>Summer 2024 </td>
-				<td>3 Weeks </td>
-				<td><a href="navmesh.html"> Link </a> </td>
-			</tr>
-			<tr>
-				<td>Skeletal Animation</td>
-				<td>Summer 2024</td>
-				<td> Time 1 week</td>
-				<td> Todo </td>
-			</tr>
-			<tr>
-				<td>Frogger In Assembly</td>
-				<td>October 2022</td>
-				<td> Time 3 week</td>
-				<td> <a href="https://github.com/nhaselton/Mips-Frogger"> Link </a> </td>
-			</tr>
-
-		</table>
-	</body>
 </html>
